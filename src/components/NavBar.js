@@ -10,11 +10,11 @@ export const NavBar = () => (
           Users
         </NavLink>
       </li>
-      <li className="nav-item">
-        <NavLink to="/profile" className="nav-link">
+      {/* <li className="nav-item">
+        <NavLink to="/profile:id" className="nav-link">
           Profile
         </NavLink>
-      </li>
+      </li> */}
     </ul>
   </nav>
 )
