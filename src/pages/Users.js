@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, createContext } from 'react'
 import axios from 'axios'
 import { UserCard } from '../components/UserCard'
 import { Pagination } from '../components/Pagination'
@@ -6,14 +6,22 @@ import { Pagination } from '../components/Pagination'
 export const Users = () => {
   const [users, setUsers] = useState([])
   const [paginationNumber, setPaginationNumber] = useState(1)
+  const [totalPages, setTotalPages] = useState(0)
+
+  let url = `https://reqres.in/api/users?page=${paginationNumber}`
 
   useEffect(() => {
-    axios
-      .get(`https://reqres.in/api/users?page=${paginationNumber}`)
-      .then((response) => {
-        setUsers(response.data.data)
-      })
+    axios.get(url).then((response) => {
+      setUsers(response.data.data)
+      // setTotalPages(response.data.total_pages)
+    })
   }, [])
+
+  // const context = createContext(users)
+
+  // const setPaginationNumber = (number) => {
+  //   return (paginationNumber = number)
+  // }
 
   return (
     <div>
@@ -33,7 +41,11 @@ export const Users = () => {
           )
         })}
       </div>
-      <Pagination />
+      <Pagination
+      // setPaginationNumber={(number) =>
+      //   setPaginationNumber((paginationNumber = number))
+      // }
+      />
     </div>
   )
 }

@@ -1,30 +1,31 @@
+import { Link } from 'react-router-dom'
+
 export const Pagination = (props) => {
-  // console.log(props)
   return (
     <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
+      <ul className="pagination">
+        <li className="page-item">
+          <a className="page-link" href="#" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
           </a>
         </li>
-        <li class="page-item">
-          <a class="page-link" href="#">
+        <li className="page-item" onClick={props.setPaginationNumber}>
+          <Link className="page-link" href="/">
             1
-          </a>
+          </Link>
         </li>
-        <li class="page-item">
-          <a class="page-link" href="#">
+        <li className="page-item" onClick={props.setPaginationNumber}>
+          <Link className="page-link" href="/">
             2
-          </a>
+          </Link>
         </li>
-        <li class="page-item">
-          <a class="page-link" href="#">
+        <li className="page-item">
+          <a className="page-link" href="#">
             3
           </a>
         </li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
+        <li className="page-item">
+          <a className="page-link" href="#" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
           </a>
         </li>

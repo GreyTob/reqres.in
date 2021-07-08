@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export const UserCard = (props) => (
   <div className="card">
-    <img src={props.avatar} alt={props.firstName} className="card-img-top" />
+    <img src={props.avatar} alt={props} className="card-img-top" />
     <div className="card-body">
       <h3 className="card-title">{props.firstName + ' ' + props.lastName}</h3>
       <p>

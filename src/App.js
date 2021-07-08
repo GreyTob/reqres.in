@@ -10,7 +10,7 @@ function App() {
         <NavBar />
         <Switch>
           <Route path="/" exact component={Users} />
-          <Route path="/profile/1" component={Profile} />
+          <Route path="/profile/:id" component={Profile} />
           {/* <Route path="/profile:id" component={Profile} /> */}
           <Redirect path="/" />
         </Switch>
