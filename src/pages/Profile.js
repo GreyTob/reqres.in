@@ -1,41 +1,32 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { Loader } from '../components/Loader/Loader'
-import axios from 'axios'
+import { Context } from '../Context'
 
 export const Profile = ({ match }) => {
   const ID = +match.params.id
-
-  //нужно бы useContext
-  const [users, setUsers] = useState([])
-  const [loader, setLoader] = useState(false)
-
-  useEffect(() => {
-    let url = `https://reqres.in/api/users?page=1`
-    axios.get(url).then((response) => {
-      setUsers(response.data.data)
-      setLoader(true)
-    })
-  }, [])
+  const { users } = useContext(Context)
 
   return (
     <div className="card">
-      {!loader ? (
+      {!users.data ? (
         <Loader />
       ) : (
-        users.map((user) => {
+        users.data.map((user) => {
           if (user.id === ID) {
             return (
-              <>
+              <div key={user.first_name}>
                 <img
                   src={user.avatar}
                   alt={user.first_name}
                   className="card-img-top"
                 />
+
                 <div className="card-body">
                   <h3 className="card-title">
                     {user.first_name + ' ' + user.last_name}
                   </h3>
+
                   <p>
                     Email:&nbsp;
                     <a href={`email:${user.email}`}>{user.email} </a>
@@ -45,7 +36,7 @@ export const Profile = ({ match }) => {
                     Back
                   </Link>
                 </div>
-              </>
+              </div>
             )
           }
         })
