@@ -1,4 +1,3 @@
-// import Reacr from 'react'
 import { NavLink } from 'react-router-dom'
 
 export const NavBar = () => (
@@ -10,11 +9,11 @@ export const NavBar = () => (
           Users
         </NavLink>
       </li>
-      {/* <li className="nav-item">
-        <NavLink to="/profile:id" className="nav-link">
-          Profile
+      <li className="nav-item">
+        <NavLink to="/info" exact className="nav-link">
+          Info
         </NavLink>
-      </li> */}
+      </li>
     </ul>
   </nav>
 )

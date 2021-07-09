@@ -1,33 +1,45 @@
 import { Link } from 'react-router-dom'
 
-export const Pagination = (props) => {
+export const Pagination = ({
+  totalPages,
+  setPaginationNumber,
+  setPaginationNumberArrow,
+}) => {
+  const pages = new Array(totalPages).fill('')
+
   return (
-    <nav aria-label="Page navigation example">
+    <nav aria-label="Page navigation example " className="center">
       <ul className="pagination">
-        <li className="page-item">
-          <a className="page-link" href="#" aria-label="Previous">
+        <li
+          className="page-item "
+          onClick={setPaginationNumberArrow.bind(this, -1)}
+        >
+          <Link className="page-link" href="/" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li className="page-item" onClick={props.setPaginationNumber}>
-          <Link className="page-link" href="/">
-            1
           </Link>
         </li>
-        <li className="page-item" onClick={props.setPaginationNumber}>
-          <Link className="page-link" href="/">
-            2
-          </Link>
-        </li>
-        <li className="page-item">
-          <a className="page-link" href="#">
-            3
-          </a>
-        </li>
-        <li className="page-item">
-          <a className="page-link" href="#" aria-label="Next">
+
+        {pages.map((_, ind) => {
+          return (
+            <li
+              key={ind + Math.random()}
+              className="page-item"
+              onClick={setPaginationNumber.bind(this, ind + 1)}
+            >
+              <Link className="page-link" href="/">
+                {ind + 1}
+              </Link>
+            </li>
+          )
+        })}
+
+        <li
+          className="page-item"
+          onClick={setPaginationNumberArrow.bind(this, +1)}
+        >
+          <Link className="page-link" href="/" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
